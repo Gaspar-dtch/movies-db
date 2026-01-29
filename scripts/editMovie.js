@@ -16,7 +16,7 @@ axios.get(`${apiURL}/movies/${movieId}`)
         const releaseYearValue = movie.releaseYear;
         const descriptionValue = movie.description;
         const imgValue = movie.img;
-        const videoValue = movie.video;
+        const videoValue = movie.video; // récupère les infos du film pour déjà les afficer dans les champs
 
         document.querySelector(".formulaire").innerHTML = `
                 <div class="field">
@@ -57,23 +57,21 @@ axios.get(`${apiURL}/categories`)
     .then(response => {
         response.data.data.forEach((categorie) => {
 
-            const createTag = document.createElement("div")
-            createTag.classList.add("tag")
-            createTag.dataset.id = categorie.id
+            const createTag = document.createElement("div") // créer une div
+            createTag.classList.add("tag") // ajoute la class tag
+            createTag.dataset.id = categorie.id // ajout dataset avec son id
             createTag.textContent = categorie.name
 
-            document.querySelector(".tags").appendChild(createTag);
+            document.querySelector(".tags").appendChild(createTag); // ajoute les tags créer dans la div tags
 
             createTag.addEventListener("click", (e) => {
-                e.currentTarget.classList.toggle("selected")
+                e.currentTarget.classList.toggle("selected") // toggle la class selected
 
-                filmCategorie = [];
+                filmCategorie = []; // réinitialise le tableau à chaque tag selected
 
                 document.querySelectorAll(".selected").forEach(element => {
-
-                    filmCategorie.push(parseInt(element.dataset.id))
+                    filmCategorie.push(parseInt(element.dataset.id)) // converti l'id en nombre et l'ajoute dans le tableau avec push
                 })
-                console.log(filmCategorie);
             });
         })
     })
@@ -100,6 +98,6 @@ document.querySelector(".add_button").addEventListener("click", async function (
         categories: filmCategorie
     })
         .then(function (response) {
-            window.location.href = `movie.html?id=${response.data.data.id}`;
+            window.location.href = `movie.html?id=${response.data.data.id}`; // redirige vers la page modifier
         })
 })

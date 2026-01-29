@@ -1,7 +1,7 @@
 //---------------------
 // VARIABLES DU PROGRAMME
 const searchParams = new URLSearchParams(window.location.search);
-const movieId = searchParams.get("id");
+const movieId = searchParams.get("id"); // récupère l'id dans l'url
 
 const apiURL = "https://moviedb.preprod.myrole.fr/api/v1/movies"
 
@@ -21,10 +21,10 @@ axios.get(`${apiURL}/${movieId}`)
         let video = response.data.data.video;
         let videoMovie = video.slice(32)
 
-        const categoriesHTML = movie.categories
-            .map(cat => `<span class="category">${cat.name}</span>`)
-            .join("");
+        const categoriesHTML = movie.categories.map(cat => `<span class="category">${cat.name}</span>`) // parcours les catégorie et les récupère une par une
+            .join(""); // enléve les séparateurs
 
+        // génère une page avec les infos du film
         document.querySelector(".movie-video").innerHTML = `
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoMovie}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         `;
@@ -87,33 +87,22 @@ axios.get(`${apiURL}/${movieId}`)
 
 
 // PANNEAU DELETE
-document.body.addEventListener("click", (e) => {
+document.body.addEventListener("click", (e) => {  // si le click est sur delBtn -> affiche l'overlay
     if (e.target.classList.contains("del-btn")) {
-        delPanel.style.display = "flex";  
+        delPanel.style.display = "flex";
     }
     if (e.target.classList.contains("trash-icon")) {
-        delPanel.style.display = "flex";  
+        delPanel.style.display = "flex";
     }
 })
 
 // BOUTON YES
 buttonYes.addEventListener("click", async function () {
-    await axios.delete(`${apiURL}/${movieId}`)
-    window.location.href = "../index.html";
+    await axios.delete(`${apiURL}/${movieId}`) // supprime le film
+    window.location.href = "../index.html"; // redirige vers la page home
 });
 
 // BOUTON NO
 buttonNo.addEventListener("click", function () {
     delPanel.style.display = "none";
 });
-
-
-
-
-
-// document.body.addEventListener("click", async (e) => {
-//     if (e.target.classList.contains("del_button")) {
-//         await axios.delete(`${apiURL}/${movieId}`)
-//         window.location.href = "../index.html";
-//     }
-// })

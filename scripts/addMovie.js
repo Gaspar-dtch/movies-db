@@ -11,23 +11,21 @@ axios.get(`${apiURL}/categories`)
     .then(response => {
         response.data.data.forEach((categorie) => {
 
-            const createTag = document.createElement("div")
-            createTag.classList.add("tag")
-            createTag.dataset.id = categorie.id
+            const createTag = document.createElement("div") // créer une div
+            createTag.classList.add("tag") // ajoute la class tag
+            createTag.dataset.id = categorie.id // ajout dataset avec son id
             createTag.textContent = categorie.name
 
-            document.querySelector(".tags").appendChild(createTag);
+            document.querySelector(".tags").appendChild(createTag); // ajoute les tags créer dans la div tags
 
             createTag.addEventListener("click", (e) => {
-                e.currentTarget.classList.toggle("selected")
+                e.currentTarget.classList.toggle("selected") // toggle la class selected
 
-                filmCategorie = [];
+                filmCategorie = []; // réinitialise le tableau à chaque tag selected
 
                 document.querySelectorAll(".selected").forEach(element => {
-
-                    filmCategorie.push(parseInt(element.dataset.id))
+                    filmCategorie.push(parseInt(element.dataset.id)) // converti l'id en nombre et l'ajoute dans le tableau avec push
                 })
-                console.log(filmCategorie);
             });
         })
     })
@@ -54,7 +52,7 @@ document.querySelector(".add_button").addEventListener("click", async function (
         categories: filmCategorie
     })
         .then(function (response) {
-            window.location.href = `movie.html?id=${response.data.data.id}`;
+            window.location.href = `movie.html?id=${response.data.data.id}`; // redirige vers la page créer
         })
 
 })
@@ -70,33 +68,3 @@ document.querySelector(".add_btn_categorie").addEventListener("click", async fun
         })
 
 })
-
-
-// DRAG
-// const slider = document.querySelector(".tags");
-// let isDown = false;
-// let startX;
-// let scrollLeft;
-
-// slider.addEventListener("mousedown", (e) => {
-//     isDown = true;
-//     startX = e.pageX - slider.offsetLeft;
-//     scrollLeft = slider.scrollLeft;
-// });
-
-// slider.addEventListener("mouseleave", () => {
-//     isDown = false;
-// });
-
-// slider.addEventListener("mouseup", () => {
-//     isDown = false;
-// });
-
-// slider.addEventListener("mousemove", (e) => {
-//     if (!isDown) return;
-
-//     e.preventDefault();
-//     const x = e.pageX - slider.offsetLeft;
-//     const walk = x - startX;
-//     slider.scrollLeft = scrollLeft - walk;
-// });
