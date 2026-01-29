@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <link rel="stylesheet" href="../styles/style_movie.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Notable&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="nav">
+        <a href="../index.html" class="nav-logo"><img src="../images/logo noir.png" alt="Logo"></a>
+        <a href="addMovie.html" id="addMovie">Ajouter</a>
+        <input type="search" id="search_input" placeholder="Rechercher...">
+    </header>
+
+    <section  class="movie">
+        <div class="movie-info"></div>
+
+        <div class="movie-video"></div>
+        
+        <div id="del_panel">
+            <div id="quit_the_game">
+                <h2>VOULEZ VOUS SUPPRIMER CE FILM ?</h2>
+    
+                <div id="button_quit_the_game">
+                    <p id="button_yes">OUI</p>
+                    
+                    <div id="button_no">
+                        <p>NON</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>2
+    
+
+    <script src="movie.js"></script>
+</body>
+
+</html>

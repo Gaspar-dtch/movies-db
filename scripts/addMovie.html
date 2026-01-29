@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un film</title>
+    <link rel="stylesheet" href="../styles/style_form.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Notable&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="nav">
+        <a href="../index.html" class="nav-logo"><img src="../images/logo noir.png" alt="Logo"></a>
+        <a href="addMovie.html" id="addMovie">Ajouter</a>
+        <input type="search" id="search_input" placeholder="Rechercher...">
+    </header>
+
+    <section class="section">
+        <div class="formulaire">
+            <div class="field">
+                <label for="name_input">Titre</label>
+                <input class="form_input" type="text" id="name" placeholder="ex : Avatar" required>
+            </div>
+
+
+            <div class="field">
+                <label for="author_input">Auteur</label>
+                <input class="form_input" type="text" id="author" placeholder="ex : James Cameron" required>
+            </div>
+
+            <div class="field">
+                <label for="releaseYear_input">Année de parution</label>
+                <input class="form_input" type="number" id="releaseYear" placeholder="ex : 2009" required>
+            </div>
+
+            <div class="field">
+                <label for="description_input">Description</label>
+                <input class="form_input" type="text" id="description" placeholder="ex : Malgré sa paralysie, Jake Sully, un ancien marine..." required>
+            </div>
+
+            <div class="field">
+                <label for="img_input">Image</label>
+                <input class="form_input" type="url" id="img" placeholder="ex : https://..." required>
+            </div>
+
+            <div class="field">
+                <label for="video_input">Vidéo</label>
+                <input class="form_input" type="url" id="video" placeholder="ex : https://www.youtube.com/watch?v=..." required>
+            </div>
+        </div>
+
+        <div class="tags">
+            <a href="add_categorie.html"><div class="tag">+</div></a>
+        </div>
+
+        <button class="add_button" type="button">Ajouter le film</button>
+
+        <button class="squishy-btn" type="button">Squishy bouton</button>
+    </section>
+
+    <script src="addMovie.js"></script>
+</body>
+
+</html>
