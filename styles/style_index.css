@@ -132,9 +132,9 @@ body {
     font-weight: 500;
 }
 
+/* SEARCH EMPTY */
 .search-empty {
     display: none;
-    display: flex;
     justify-content: center;
     min-width: 2.5rem;
     max-width: auto;
@@ -155,47 +155,76 @@ body {
 .text-search-empty {
     display: flex;
     color: #FFF;
+    font-size: 1.2rem;
     font-family: "Roboto", sans-serif;
 }
 
+/* BOUTON */
 .btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #FFF;
-    width: 50px;
-    height: 50px;
-    background-color: #262425;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-}
-
-.add-icon {
     position: relative;
     overflow: hidden;
-    width: 22px;
-    height: 22px;
-    background-color: #FFF;
-    transition: all 0.45s ease;
-    mask: url("../images/plus_2.svg") no-repeat center;
-    mask-size: contain;
-    z-index: 1;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: #1a1a1a;
 }
 
-.btn .add-icon::before {
+.btn:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 4px;
+}
+
+.btn::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: limegreen;
+    background-color: #FFF;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.45s ease;
     z-index: 0;
 }
 
-.btn:hover .add-icon::before {
+.btn:hover::before {
     transform: scaleX(1);
+}
+
+.btn-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    z-index: 1;
+    font-family: "Roboto", sans-serif;
+}
+
+.btn-text {
+    font-weight: 500;
+    color: #FFF;
+    transition: color 0.45s ease;
+}
+
+.btn:hover .btn-text {
+    color: #000;
+}
+
+.arrow-icon {
+    width: 11px;
+    height: 11px;
+    background-color: #FFF;
+    transition: all 0.45s ease;
+
+    -webkit-mask: url("../images/arrow.svg") no-repeat center;
+    -webkit-mask-size: contain;
+    mask: url("../images/arrow.svg") no-repeat center;
+    mask-size: contain;
+}
+
+.btn:hover .arrow-icon {
+    background-color: #1a1a1a;
+    transform: translateX(2px);
 }
 
 @media (max-width: 960px) {
