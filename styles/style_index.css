@@ -134,6 +134,8 @@ body {
 
 .search-empty {
     display: none;
+    display: flex;
+    justify-content: center;
     min-width: 2.5rem;
     max-width: auto;
     margin: 40px 80px 125px 80px;
@@ -143,10 +145,10 @@ body {
 
 .content-search-empty {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 15px 29px 15px 15px;
+    text-align: center;
+    padding: 20px 29px 15px 15px;
     gap: 30px;
 }
 
