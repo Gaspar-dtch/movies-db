@@ -13,6 +13,8 @@ axios.get(`${apiURL}`)
 
         const allMovies = response.data.data // récupère tout les film et les stocke dans allMovies
 
+        let count = 0
+
         function createListItems(data) {
             let html = ""
             data.forEach(movie => { // pour chaque film ça génère une card
@@ -24,27 +26,31 @@ axios.get(`${apiURL}`)
                         <p class="description">${movie.description.slice(0, 200) + "..."}</p>
                     </a>
                 `
+
+                count++
+                console.log("Nombre de film : " + count);
             });
             gridContainer.innerHTML = html // innerHTML de toute les cards dans gridContainer
         }
 
+
         createListItems(allMovies) // créer une liste items contenant tout les films
 
         searchInput.addEventListener("input", (e) => {
+            count = 0
             searchEmpty.style.display = "none"; // cache le message "pas de résultat" à chaque input
 
             const currentValue = e.target.value // récupère la valeur actuel dans l'input et le stocke dans currentValue
             gridContainer.innerHTML = "" // à chaque inpput remet le contenue vide
             const dataFilter = allMovies.filter(movie => movie.name.toLowerCase().includes(currentValue.toLowerCase()) ||
-                movie.author.toLowerCase().includes(currentValue.toLowerCase()) ||
-                movie.description.toLowerCase().includes(currentValue.toLowerCase())) // filtre la liste de tout les films, compare le nom des films en minuscule avec la valeur dans l'input en minuscule et les stocke dans dataFilter
+                movie.author.toLowerCase().includes(currentValue.toLowerCase()))
+            //  || movie.description.toLowerCase().includes(currentValue.toLowerCase())) // filtre la liste de tout les films, compare le nom des films en minuscule avec la valeur dans l'input en minuscule et les stocke dans dataFilter
 
             if (dataFilter.length === 0) { // si il n'y a pas de film dans dataFilter alors afficher le message "pas de résultat"
-                
+
                 searchEmpty.style.display = "flex";
             }
-            
+
             createListItems(dataFilter)
         })
     })
-

@@ -47,8 +47,6 @@ document.querySelector(".add_button").addEventListener("click", async function (
         description: filmSynopsis,
         releaseYear: Number(filmReleaseDate),
         video: filmVideoUrl,
-        likes: 0,
-        dislikes: 0,
         categories: filmCategorie
     })
         .then(function (response) {
