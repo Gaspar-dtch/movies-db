@@ -38,6 +38,13 @@ body {
 
 #search_input {
     display: flex;
+    height: 1.5rem;
+    color: #252324;
+    background-color: #FFF;
+    border: solid 1px rgba(255, 255, 255, 0.08);
+    border-radius: 0.3rem;
+    padding: 0rem 0.3rem;
+    transition: all 0.2s ease;
 }
 
 #addMovie {
