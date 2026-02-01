@@ -38,23 +38,42 @@ axios.get(`${apiURL}/movies`)
 
         createListItems(allMovies) // appel la fonction createListItems avec tout les films
 
-        searchInput.addEventListener("input", (e) => {
-            searchEmpty.style.display = "none"; // cache le message "pas de résultat" à chaque input
-
-            const currentValue = e.target.value // récupère la valeur actuel dans l'input et le stocke dans currentValue
-            gridContainer.innerHTML = "" // à chaque inpput remet le contenue vide
-            const dataFilter = allMovies.filter(movie => movie.name.toLowerCase().includes(currentValue.toLowerCase()) ||
-                movie.author.toLowerCase().includes(currentValue.toLowerCase()))
-            //  || movie.description.toLowerCase().includes(currentValue.toLowerCase())) // filtre la liste de tout les films, compare le nom des films en minuscule avec la valeur dans l'input en minuscule et les stocke dans dataFilter
-
-            if (dataFilter.length === 0) { // si il n'y a pas de film dans dataFilter alors afficher le message "pas de résultat"
-
-                searchEmpty.style.display = "flex";
-            }
-
-            createListItems(dataFilter)
-        })
     })
+
+// BARRE DE RECHERCHE
+searchInput.addEventListener("input", (e) => {
+    searchEmpty.style.display = "none"; // cache le message "pas de résultat" à chaque input
+
+    const currentValue = e.target.value // récupère la valeur actuel dans l'input et le stock dans currentValue
+    gridContainer.innerHTML = "" // à chaque inpput remet le contenue vide
+    const dataFilter = allMovies.filter(movie => movie.name.toLowerCase().includes(currentValue.toLowerCase()) ||
+        movie.author.toLowerCase().includes(currentValue.toLowerCase()))
+    //  || movie.description.toLowerCase().includes(currentValue.toLowerCase())) // filtre la liste de tout les films, compare le nom des films en minuscule avec la valeur dans l'input en minuscule et les stocke dans dataFilter
+
+    if (dataFilter.length === 0) { // si il n'y a pas de film dans dataFilter alors afficher le message "pas de résultat"
+
+        searchEmpty.style.display = "flex";
+    }
+
+    createListItems(dataFilter)
+})
+// il faut que je mettes le système de barre de recherche dans la même fonction que matchCategorie pour qu'a chaque input je puisse appeler les fonctions matchSearch et matchCategories
+
+
+function filterMovies() {
+    const filter = allMovies.filter(movie => {
+        let matchCategories
+
+        if (selectedCategories === 0) {
+            matchCategories = true
+        } else {
+            matchCategories = movie.categories.some(caté => selectedCategories.includes(caté.id))
+        }
+
+        
+    })
+    console.log(filter);
+}
 
 
 // GÉNÈRE LES CATÉGORIES
