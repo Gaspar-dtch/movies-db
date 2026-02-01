@@ -30,7 +30,7 @@ function createListItems(movies) {
     console.log(movies.length);
 
     if (movies.length === 0) { // vérifie si aucun film apparait
-        searchEmpty.style.display = "flex"; // si vrai, affiche le message "pas de résultat"
+        searchEmpty.style.display = "flex"; // si vide, affiche le message "pas de résultat"
     } else {
         searchEmpty.style.display = "none"; // sinon le cache
     }
@@ -40,42 +40,28 @@ function createListItems(movies) {
 function filterMovies() {
     const filter = allMovies.filter(movie => {
 
-        // gridContainer.innerHTML = "" // à chaque inpput remet le contenue vide
-        console.log("----------------------------------------");
-        
-        console.log("searchValue = ", searchValue);
-        console.log("Movie name : ", movie.name);
-        
-        console.log("Movie name includes searchValue : ", movie.name.toLowerCase().includes(searchValue.toLowerCase()));
-        console.log("Movie author includes searchValue : ", movie.author.toLowerCase().includes(searchValue.toLowerCase()));
-        
-        
-        
-
-        const matchSearch = movie.name.toLowerCase().includes(searchValue.toLowerCase()) || movie.author.toLowerCase().includes(searchValue.toLowerCase())
-        //  || movie.description.toLowerCase().includes(searchValue.toLowerCase())) // filtre la liste de tout les films, compare le nom des films en minuscule avec la valeur dans l'input en minuscule et les stocke dans matchSearch
+        const matchSearch = movie.name.toLowerCase().includes(searchValue.toLowerCase()) // compare le nom des films en minuscule avec la valeur dans l'input en minuscule et renvoie true ou false
+            || movie.author.toLowerCase().includes(searchValue.toLowerCase())
+            || movie.description.toLowerCase().includes(searchValue.toLowerCase())
 
         let matchCategories
 
-        if (selectedCategories === 0) {
-            matchCategories = true
+        if (selectedCategories.length === 0) {
+            matchCategories = true // si pas de catégorie selected alors true
         } else {
-            matchCategories = movie.categories.some(caté => selectedCategories.includes(caté.id))
+            matchCategories = movie.categories.some(caté => selectedCategories.includes(caté.id)) // sinon renvoie false
         }
 
-        console.log("matchCategories : ", matchCategories);
-        console.log("matchSearch : ", matchSearch);
         return matchSearch && matchCategories
     })
 
-    console.log(filter);
-    
     createListItems(filter)
 }
 
 // BARRE DE RECHERCHE
 searchInput.addEventListener("input", (e) => {
     searchValue = e.target.value // récupère la valeur actuel dans l'input et le stock dans searchValue
+
     filterMovies()
 })
 
