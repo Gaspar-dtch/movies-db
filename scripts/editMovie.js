@@ -36,7 +36,8 @@ axios.get(`${apiURL}/movies/${movieId}`)
 
                 <div class="field">
                     <label for="description_input">Description</label>
-                    <input class="form_input" type="text" id="description" value="${descriptionValue}" required>
+                    <textarea class="form_input" id="description" rows="5" required></textarea>
+                </div>
                 </div>
 
                 <div class="field">
@@ -49,8 +50,9 @@ axios.get(`${apiURL}/movies/${movieId}`)
                     <input class="form_input" type="url" id="video" value="${videoValue}" required>
                 </div>
                 `;
-    })
 
+        document.getElementById("description").value = `"${descriptionValue}"`;
+    })
 
 // GÉNÈRE LES CATÉGORIES
 axios.get(`${apiURL}/categories`)
