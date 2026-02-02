@@ -90,9 +90,11 @@ axios.get(`${apiURL}/${movieId}`)
 document.body.addEventListener("click", (e) => {  // si le click est sur delBtn -> affiche l'overlay
     if (e.target.classList.contains("del-btn")) {
         delPanel.style.display = "flex";
+        document.body.classList.toggle("no-scroll")
     }
     if (e.target.classList.contains("trash-icon")) {
         delPanel.style.display = "flex";
+        document.body.classList.toggle("no-scroll")
     }
 })
 
@@ -105,4 +107,5 @@ buttonYes.addEventListener("click", async function () {
 // BOUTON NO
 buttonNo.addEventListener("click", function () {
     delPanel.style.display = "none";
+    document.body.classList.toggle("no-scroll")
 });

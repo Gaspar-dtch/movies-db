@@ -27,7 +27,7 @@ function createListItems(movies) {
     });
     gridContainer.innerHTML = html // innerHTML de toute les cards dans gridContainer
 
-    console.log(movies.length);
+    console.log("Nombre de film trouvé : ", movies.length);
 
     if (movies.length === 0) { // vérifie si aucun film apparait
         searchEmpty.style.display = "flex"; // si vide, affiche le message "pas de résultat"

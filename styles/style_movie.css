@@ -82,18 +82,9 @@ body {
     margin-top: 15%;
 }
 
-/* .poster{
-    display: block;
-    width: 620px;
-    height: 773.33px;
-    padding-left: 40px;
-} */
-
 .affiche {
     width: 500px;
     max-height: 750px;
-    /* max-width: 100%;
-    height: auto; */
     border-radius: 10px;
     object-fit: cover;
 }
@@ -131,11 +122,6 @@ body {
     border-radius: 6px;
     font-size: 1em;
 }
-
-/* .category:hover {
-    color: #262425;
-    background-color: #FFF;
-} */
 
 .buttons {
     display: flex;
@@ -234,20 +220,27 @@ body {
     transform: scaleX(1);
 }
 
+.no-scroll{
+    overflow-y: hidden;
+}
+
 #del_panel {
     display: none;
+    position: fixed;
     justify-content: center;
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    margin: 0;
+    inset: 0;
     background-color: rgba(217, 217, 217, 0.5);
+    z-index: 1;
 }
 
 #quit_the_game {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 978px;
     height: 404px;
     background-color: #1A1A1A;
@@ -261,6 +254,12 @@ body {
     justify-content: center;
     margin-bottom: 65px;
     font-size: 40px;
+}
+
+#button_quit_the_game{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }
 
 #button_yes,
