@@ -43,9 +43,9 @@ axios.get(`${apiURL}/${movieId}`)
                     <p><span class="title">Description : </span>${movie.description}</p>
                     <p>${categoriesHTML}</p>
 
-                    <p class="like"><img class="like_counter" src="../images/like_2.svg" alt="Like">${movie.likes}</p>
+                    <p class="like"><img class="like_counter" src="../images/like.svg" alt="Like">${movie.likes}</p>
 
-                    <p class="dislike"><img class="dislike_counter" src="../images/dislike_2.svg" alt="Dislike">${movie.dislikes}</p>
+                    <p class="dislike"><img class="dislike_counter" src="../images/dislike.svg" alt="Dislike">${movie.dislikes}</p>
                     
                     <div class="buttons">
                         <a class="btn" href="addMovie.html" title="Ajouter"><span class="add-icon"></span></a>
